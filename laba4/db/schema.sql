@@ -1,0 +1,16 @@
+CREATE SCHEMA IF NOT EXISTS wt4;
+
+CREATE TYPE role_type AS ENUM ('admin', 'user');
+
+CREATE TABLE IF NOT EXISTS wt4.user (
+  id INT NOT NULL PRIMARY KEY,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(128) NOT NULL,
+  role role_type DEFAULT 'user'
+);
+
+CREATE TABLE IF NOT EXISTS wt4.room (
+  id INTEGER NOT NULL CONSTRAINT AUTO_INCREMENT PRIMARY KEY,
+  room_number VARCHAR(10) NOT NULL,
+  occupied VARCHAR(5) NOT NULL DEFAULT 'false'
+);
